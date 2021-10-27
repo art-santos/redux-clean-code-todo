@@ -1,4 +1,3 @@
-import React from 'react'
 import { Section, SectionTitle } from '../../../../styles'
 import TodoFactory from '../utils/TodoFactory'
 
@@ -7,7 +6,7 @@ const TodoSection = ({section, value}:any) => {
         <>
         <Section>
             <SectionTitle>{section}</SectionTitle>
-            <TodoFactory />
+            <TodoFactory value={value}/>
         </Section>
         </>
     )

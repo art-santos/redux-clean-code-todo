@@ -1,8 +1,10 @@
 import React from 'react'
 import { ChallengeComponent } from './ChallengeComponent'
 
+
 function App() {
   return (
+    
     <div className="App">
       <header className="App-header">
         <div style={{ marginLeft: 25, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
@@ -12,8 +14,6 @@ function App() {
       <main
         style={{
           width: 'calc(100vw - 50px)',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
           justifyContent: 'center',
           alignItems: 'center',
           margin: '0 auto',

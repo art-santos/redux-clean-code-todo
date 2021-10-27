@@ -1,16 +1,33 @@
 import React from 'react'
 import { Form, Input, Submit } from '../../../../styles'
+import { addTodo } from '../../../app/redux/features/todo.slice'
+import { useAppDispatch } from '../../../app/redux/hooks'
 
 const InputTodo = () => {
+    const [value, setValue] = React.useState('')
+    const dispatch = useAppDispatch()
 
     const handleSubmit = (e:any) => {
         e.preventDefault()
+        if(value !== undefined){
+        dispatch(addTodo({value: value}))
+        setValue('')
+        }
+        
+    }
+
+    const handleChange = (e:any) => {
+        setValue(e.target.value)
     }
 
     return (
         <>
         <Form onSubmit={(e) => {handleSubmit(e)}}>
-            <Input />
+            <Input 
+            required = {true}
+            value={value}
+            onChange={(e) => {handleChange(e)}}
+            />
             <Submit />
         </Form>
         </>
