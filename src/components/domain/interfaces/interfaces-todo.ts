@@ -1,11 +1,11 @@
 export interface ITodo {
-    id: string;
-    text: string;
-    position: number;
-    date: number;
+  id: string;
+  text: string;
+  position: number;
+  date: number;
 }
 
 export interface ITodoState {
-    value: ITodo[];
-    sections: string[];
+  value: ITodo[];
+  sections: string[];
 }

@@ -1,6 +1,6 @@
-import { Todo } from '../entities/Todos'
+import { Todo } from "../entities/Todos";
 
 export default interface TodoRepository {
-    GetAllTodos?(): Promise<Todo[]>
-    CreateTodo?(text: string): Todo
+  GetAllTodos?(): Promise<Todo[]>;
+  CreateTodo?(text: string): Todo;
 }

@@ -1,4 +1,4 @@
-export interface IButton{
-    id?: string
-    position?: number
+export interface IButton {
+  id?: string;
+  position?: number;
 }
