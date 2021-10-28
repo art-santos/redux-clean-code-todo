@@ -1,11 +1,12 @@
 import React from 'react';
-import { TodoContainer, Text } from '../../../../styles'
+import { TodoContainer, Text } from './styles'
 import ButtonLeft from '../atoms/ButtonLeft'
 import ButtonRight from '../atoms/ButtonRight'
 import ButtomCompleted from '../atoms/Completed'
 import ButtonDelete from '../atoms/Delete'
+import { ITodoComponent } from '../../../domain/interfaces/interfaces-molecules';
 
-const Todo = ({value, position}:any) => {
+const Todo:React.FC<ITodoComponent> = ({value, position}) => {
   const [active, setActive] = React.useState(false)
 
   return (

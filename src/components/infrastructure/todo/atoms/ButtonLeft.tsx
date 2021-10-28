@@ -1,10 +1,11 @@
 import React from 'react'
 import { FiArrowLeft } from "react-icons/fi";
-import { Button } from '../../../../styles';
+import { Button } from './styles';
 import { decrementPosition } from '../../../app/redux/features/todo.slice';
 import { useAppDispatch } from '../../../app/redux/hooks';
+import { IButton } from '../../../domain/interfaces/interfaces-atoms';
 
-const ButtonLeft = ({id, position}:any) => {
+const ButtonLeft: React.FC<IButton> = ({id, position}) => {
     const dispatch = useAppDispatch();
     const [disabled, setDisabled] = React.useState(false);
 
@@ -13,12 +14,16 @@ const ButtonLeft = ({id, position}:any) => {
             setDisabled(true);
         }}, [position]);
     
+    const handleClick = () => {
+        dispatch(decrementPosition({id: id}));
+    }    
+    
     return (
         <>
         <Button 
         side="left"
         disabled={disabled}
-        onClick={() => {dispatch(decrementPosition({id: id}))}}
+        onClick={() => {handleClick()}}
         >
             <FiArrowLeft />
         </Button>

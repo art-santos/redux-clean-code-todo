@@ -1,4 +1,4 @@
-import { SectionContainer } from "../../../../styles";
+import { SectionContainer } from "../organisms/styles";
 import { useAppSelector } from "../../../app/redux/hooks";
 import TodoSection from "../organisms/TodoSection";
 

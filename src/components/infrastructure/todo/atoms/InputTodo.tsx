@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Submit } from '../../../../styles'
+import { Form, Input, Submit } from './styles'
 import { addTodo } from '../../../app/redux/features/todo.slice'
 import { useAppDispatch } from '../../../app/redux/hooks'
 
@@ -7,7 +7,8 @@ const InputTodo = () => {
     const [value, setValue] = React.useState('')
     const dispatch = useAppDispatch()
 
-    const handleSubmit = (e:any) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        console.log(e)
         e.preventDefault()
         if(value !== undefined){
         dispatch(addTodo({value: value}))
@@ -16,7 +17,7 @@ const InputTodo = () => {
         
     }
 
-    const handleChange = (e:any) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value)
     }
 

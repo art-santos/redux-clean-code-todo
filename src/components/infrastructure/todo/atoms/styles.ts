@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-interface InputProps{
-    warning: boolean;
-}
 
 export const Button = styled("button")<{side: string}>`
     opacity: ${props => props.disabled ? "0.6" : "1"};
@@ -25,11 +22,6 @@ export const Button = styled("button")<{side: string}>`
     }
 `;
 
-export const Text = styled("div")`
-    text-align: center;
-    width: 50%;
-    max-width: 60%;
-`
 export const Form = styled("form")`
     display: flex;
     flex-direction: row;
@@ -41,9 +33,7 @@ export const Form = styled("form")`
     width: 98%;
 `;
 
-
-
-export const Input = styled("input").attrs<InputProps>({
+export const Input = styled("input").attrs({
     type: "text",
     placeholder: "Add Task",
     })`
@@ -69,50 +59,3 @@ export const Submit = styled("input").attrs({
     font-size: 40px;
     cursor: pointer;
 `;
-
-export const TodoContainer = styled("div")`
-    width: 100%;
-    word-wrap: break-word;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.18);
-    background-color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 10px;
-    transition: 0.5s;
-`
-export const SectionContainer = styled("div")`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-content: space-between;
-    gap: 50px;
-    row-gap: 100px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-`
-
-
-export const Section = styled("div")`
-    background-color: #fff;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.20);
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    border-radius: 10px;
-    width: 80%;
-    height: 100%;
-    padding: 0px 40px 25px 40px;
-    margin: auto;
-`
-
-export const SectionTitle = styled("div")`
-    word-wrap: break-word;
-    width: 100%;
-    text-align: center;
-    font-size: 36px;
-    padding: 10px;
-`
