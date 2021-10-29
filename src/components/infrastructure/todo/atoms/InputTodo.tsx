@@ -8,7 +8,6 @@ const InputTodo = () => {
   const dispatch = useAppDispatch();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(e);
     e.preventDefault();
     if (value !== undefined) {
       dispatch(addTodo({ value: value }));

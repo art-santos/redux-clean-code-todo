@@ -6,7 +6,7 @@ export const store = configureStore({
   reducer: {
     //The reducer is the responsible for the management of all the global redux states
     todo: todoReducer,
-  },
+    },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

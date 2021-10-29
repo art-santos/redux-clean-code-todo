@@ -17,7 +17,6 @@ export const getInitialTodos = createAsyncThunk(
     const todoService = new TodoServiceImpl(todoRepository);
     const todos = await todoService.GetAllTodos();
 
-    console.log(todos);
     return todos;
   }
 );
@@ -30,9 +29,18 @@ export const TodoSlice = createSlice({
 
   reducers: {
     addTodo: (state, { payload }) => {
-      const newTodo = new Todo(payload.value);
-      state.value.push(newTodo);
-      persist(state.value);
+      // const newTodo = new Todo(payload.value);
+      // state.value.push(newTodo);
+      // persist(state.value);
+      //Bug correction here
+      const newTodo = {
+        id: 'a',
+        text: payload.value, 
+        position: 1, 
+        date: Date.now()
+    }
+    state.value.push(newTodo);
+    persist(state.value);
     },
 
     incrementPosition: (state, { payload }: PayloadAction<IButton>) => {
@@ -76,7 +84,7 @@ export const TodoSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getInitialTodos.fulfilled, (state, { payload }: any) => {
-      state.value = payload;
+      state.value = payload || [];
     });
     builder.addCase(getInitialTodos.rejected, (state) => {
       state.value = [];
