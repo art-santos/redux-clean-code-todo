@@ -3,3 +3,5 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom";
+
+//i was intending to to tests, but found no time for it.

@@ -1,4 +1,3 @@
-import React from "react";
 import { ChallengeComponent } from "./ChallengeComponent";
 
 function App() {

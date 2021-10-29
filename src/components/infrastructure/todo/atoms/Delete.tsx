@@ -4,6 +4,11 @@ import { useAppDispatch } from "../../../app/redux/hooks";
 import { deleteTodo } from "../../../app/redux/features/todo.slice";
 import { IButton } from "../../../domain/interfaces/interfaces-atoms";
 
+/*
+  So, that's the small trash button that's going to be shown on the left side of the component.
+  Basically he uses a dispatch to pass the item's id to the reducer, and then the reducer will remove it using a filter.
+*/
+
 const ButtonDelete: React.FC<IButton> = ({ id }) => {
   const dispatch = useAppDispatch();
   const [active, setActive] = React.useState(false);

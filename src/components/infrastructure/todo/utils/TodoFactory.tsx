@@ -4,6 +4,12 @@ import { ITodoFactoryProps } from "../../../domain/interfaces/interfaces-organis
 import { ITodo } from "../../../domain/interfaces/interfaces-todo";
 import Todo from "../molecules/Todo";
 
+/*
+  This section is going to be responbile for passaging props and redereding the component Todo as many times as the number of todos
+  present in the state.
+*/
+
+
 const TodoFactory: React.FC<ITodoFactoryProps> = ({ value }) => {
   const todo: any = useAppSelector((state) => state.todo);
 

@@ -2,6 +2,11 @@ import { SectionContainer } from "../organisms/styles";
 import { useAppSelector } from "../../../app/redux/hooks";
 import TodoSection from "../organisms/TodoSection";
 
+
+/*
+  This component is going to be used to create the sections for the todo list.
+*/
+
 const SectionFactory = () => {
   const sections = useAppSelector((state) => state.todo.sections);
 

@@ -4,6 +4,12 @@ import { completeTodo } from "../../../app/redux/features/todo.slice";
 import { useAppDispatch, useAppSelector } from "../../../app/redux/hooks";
 import { IButton } from "../../../domain/interfaces/interfaces-atoms";
 
+/*
+  That's the checkmark that's going to be show at the right side of the todo. It is a little more complex than the delete.
+  Basically, he receives the state of the list length and and use it to set himself active.
+  It also passes an id as an argument to the reducer for it to know which todo is being completed.
+*/
+
 const ButtonComplete: React.FC<IButton> = ({ id, position }) => {
   const dispatch = useAppDispatch();
   const todo = useAppSelector((state) => state.todo);
