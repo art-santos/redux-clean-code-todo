@@ -1,21 +1,29 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import TodoRepositoryImpl from "../../../data/repositories/TodoRepositoryImpl";
 import { persist } from "../../../data/usecases/persist";
+import retrieve from "../../../data/usecases/retrieve";
 import { IButton } from "../../../domain/interfaces/interfaces-atoms";
 import { ITodo } from "../../../domain/interfaces/interfaces-todo";
-import TodoServiceImpl from "../../../domain/usecases/TodoService";
 
 //this function is going to use the repo implementations to get the data from the database.
 export const getInitialTodos = createAsyncThunk(
   "posts/getInitialTodos",
   async () => {
-    //First, let's create a new repo instance.
-    const todoRepository = new TodoRepositoryImpl();
-    //Then, let's tell the repo which server we are going to implement.repository
-    const todoService = new TodoServiceImpl(todoRepository);
-    //Finally, let's use the function we want to get the data.
-    const todos = await todoService.GetAllTodos();
-    //Todos is going to be an array of objects.
+    const todo = await retrieve();
+
+    function trimPosition(value: any) {
+      if(typeof value === 'string'){
+        if(value == "open"){
+          return 1;
+        }else{
+          return 3;
+        }
+      }else{
+        return value;
+      }
+    }
+    const todos = todo.map((item:any) => typeof item.state === 'string' ? {...item, state: trimPosition(item.state)} : item);
+
+    console.log('stawdwdte-->',todos)
     return todos;
   }
 );
@@ -37,15 +45,10 @@ export const TodoSlice = createSlice({
   reducers: {
     //So, i've had a bug with serialization in this step. The commented code was the one who wasn't workign properly.
     addTodo: (state, { payload }) => {
-      // const newTodo = new Todo(payload.value);
-      // state.value.push(newTodo);
-      // persist(state.value);
-      //Bug correction here
-    //This one works just fine.
       const newTodo = {
         id: 'a',
-        text: payload.value, 
-        position: 1, 
+        title: payload.value, 
+        state: 1, 
         date: Date.now()
     }
     state.value.push(newTodo);
@@ -55,8 +58,8 @@ export const TodoSlice = createSlice({
     incrementPosition: (state, { payload }: PayloadAction<IButton>) => {
       state.value.forEach((todo) => {
         if (todo.id === payload.id) {
-          if (todo.position <= sections.length - 1) {
-            todo.position += 1;
+          if (todo.state <= sections.length - 1) {
+            todo.state += 1;
             todo.date = Date.now();
           }
         }
@@ -68,8 +71,8 @@ export const TodoSlice = createSlice({
     decrementPosition: (state, { payload }: PayloadAction<IButton>) => {
       state.value.forEach((todo) => {
         if (todo.id === payload.id) {
-          if (todo.position >= 2) {
-            todo.position -= 1;
+          if (todo.state >= 2) {
+            todo.state -= 1;
             todo.date = Date.now();
           }
         }
@@ -87,7 +90,7 @@ export const TodoSlice = createSlice({
     completeTodo: (state, action: PayloadAction<IButton>) => {
       state.value.forEach((todo) => {
         if (todo.id === action.payload.id) {
-          todo.position = sections.length;
+          todo.state = sections.length;
           todo.date = Date.now();
         }
       });
@@ -98,10 +101,7 @@ export const TodoSlice = createSlice({
   //but, as the initial data isn't fundamental, i've decided not to implement it.
   extraReducers: (builder) => {
     builder.addCase(getInitialTodos.fulfilled, (state, { payload }: any) => {
-      state.value = payload || [];
-    });
-    builder.addCase(getInitialTodos.rejected, (state) => {
-      state.value = [];
+      state.value = payload;
     });
   },
 });

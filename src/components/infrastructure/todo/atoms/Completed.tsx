@@ -10,19 +10,19 @@ import { IButton } from "../../../domain/interfaces/interfaces-atoms";
   It also passes an id as an argument to the reducer for it to know which todo is being completed.
 */
 
-const ButtonComplete: React.FC<IButton> = ({ id, position }) => {
+const ButtonComplete: React.FC<IButton> = ({ id, state }) => {
   const dispatch = useAppDispatch();
   const todo = useAppSelector((state) => state.todo);
   const [active, setActive] = React.useState(false);
 
   React.useEffect(() => {
-    if (position === todo.sections.length) {
+    if (state === todo.sections.length) {
       setActive(true);
     }
-  }, [position, todo]);
+  }, [state, todo]);
 
   const handleComplete = () => {
-    if (position === todo.sections.length) {
+    if (state === todo.sections.length) {
       setActive(true);
     } else {
       setActive(!active);

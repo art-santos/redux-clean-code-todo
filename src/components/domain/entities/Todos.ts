@@ -4,14 +4,14 @@ import { uuid } from "uuidv4";
 //It's going to use V4 for generating id's and date.now() to set the last alteration date
 export class Todo {
   id: string;
-  text: string;
-  position: number;
+  title: string;
+  state: number;
   date: number;
 
-  constructor(text: string) {
+  constructor(title: string) {
     this.id = uuid();
-    this.text = text;
-    this.position = 1;
+    this.title = title;
+    this.state = 1;
     this.date = Date.now();
   }
 }

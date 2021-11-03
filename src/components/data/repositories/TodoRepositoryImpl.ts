@@ -11,7 +11,7 @@ import retrieve from "../usecases/retrieve";
 
 export default class TodoRepositoryImpl implements TodoRepository {
   async GetAllTodos(): Promise<Todo[]> {
-    const res = await retrieve("todo");
+    const res = await retrieve();
     const jsonData = await JSON.parse(res);
     return jsonData;
   }

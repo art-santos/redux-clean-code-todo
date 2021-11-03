@@ -2,8 +2,8 @@
 
 export interface ITodo {
   id: string;
-  text: string;
-  position: number;
+  title: string;
+  state: number;
   date: number;
 }
 

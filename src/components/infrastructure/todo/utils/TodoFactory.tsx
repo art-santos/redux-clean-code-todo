@@ -13,39 +13,36 @@ import Todo from "../molecules/Todo";
 
 const TodoFactory: React.FC<ITodoFactoryProps> = ({ value }) => {
   const todo: any = useAppSelector((state) => state.todo);
+  
   const [test, setTest] = React.useState([]);
 
   React.useEffect(() => {
   async function getTodos() {
-    const test = await getApi('https://api.github.com/repos/every-io/demo-issues/issues?state=all');
     setTest(test);
   }
   getTodos();
   },[]);
 
-  React.useEffect(() => {
-    console.log(test);
-  }, [test])
-
-  console.log(test[0])
+  function trimPosition(value: any) {
+    if(typeof value === 'string'){
+      if(value == "open"){
+        return 1;
+      }else{
+        return 3;
+      }
+    }else{
+      return value;
+    }
+  }
 
   return (
     <>
-      {todo.value &&
+      {todo &&
         todo.value
-          .filter((item: ITodo) => item.position === value)
-          .sort((a: ITodo, b: ITodo) => {
-            return b.date < a.date;
-          })
-          .map((item: ITodo) => {
-            return <Todo key={item.id} value={item} position={value} />;
+          .filter((item: any) => trimPosition(item.state) === value)
+          .map((item: any) => {
+            return <Todo key={item.id} value={item} position={trimPosition(item.state)} />;
           })}
-
-          {/* {test.map((item, i) => {
-            return(
-              <h1>wdwd</h1>
-            )
-          })} */}
           
     </>
   );

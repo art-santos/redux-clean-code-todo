@@ -12,20 +12,19 @@ When active, delete and completed buttons are visible.
 */
 
 
-const Todo: React.FC<ITodoComponent> = ({ value, position }) => {
-  const [active, setActive] = React.useState(false);
-
+const Todo = ({ value, state }:any) => {
+  console.log('--->state', state)
   return (
     <>
       <TodoContainer>
         <div className="display">
         <ButtonDelete id={value.id} />
         </div>
-        <ButtonLeft id={value.id} position={position} />
-        <Text>{value.text}</Text>
-        <ButtonRight id={value.id} position={position} />
+        <ButtonLeft id={value.id} state={state} />
+        <Text>{value.title}</Text>
+        <ButtonRight id={value.id} state={state} />
         <div className="display">
-        <ButtomCompleted id={value.id} position={position} />
+        <ButtomCompleted id={value.id} state={state} />
         </div>
       </TodoContainer>
     </>

@@ -12,16 +12,16 @@ import { IButton } from "../../../domain/interfaces/interfaces-atoms";
   it's going to set himself inactive.
 */
 
-const ButtonRight: React.FC<IButton> = ({ id, position }) => {
+const ButtonRight: React.FC<IButton> = ({ id, state }) => {
   const dispatch = useAppDispatch();
   const todo = useAppSelector((state) => state.todo);
   const [disabled, setDisabled] = React.useState(false);
 
   React.useEffect(() => {
-    if (position === todo.sections.length) {
+    if (state === todo.sections.length) {
       setDisabled(true);
     }
-  }, [position, todo]);
+  }, [state, todo]);
 
   const handleClick = () => {
     dispatch(incrementPosition({ id: id }));
