@@ -1,0 +1,6 @@
+{
+    "ignorePatterns": ["ts", "**/src/*.ts"],
+    "rules": {
+        //...
+    }
+}

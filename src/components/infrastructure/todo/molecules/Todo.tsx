@@ -17,15 +17,16 @@ const Todo: React.FC<ITodoComponent> = ({ value, position }) => {
 
   return (
     <>
-      <TodoContainer
-        onMouseOver={() => setActive(true)}
-        onMouseLeave={() => setActive(false)}
-      >
-        {active && <ButtonDelete id={value.id} />}
+      <TodoContainer>
+        <div className="display">
+        <ButtonDelete id={value.id} />
+        </div>
         <ButtonLeft id={value.id} position={position} />
         <Text>{value.text}</Text>
         <ButtonRight id={value.id} position={position} />
-        {active && <ButtomCompleted id={value.id} position={position} />}
+        <div className="display">
+        <ButtomCompleted id={value.id} position={position} />
+        </div>
       </TodoContainer>
     </>
   );

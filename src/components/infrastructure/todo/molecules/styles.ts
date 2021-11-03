@@ -19,4 +19,12 @@ export const TodoContainer = styled("div")`
   padding: 15px;
   border-radius: 10px;
   transition: 0.5s;
+  .display{
+    display: none;
+  }
+  &:hover {
+    .display{
+      display: block;
+    }
+  }
 `;

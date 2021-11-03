@@ -1,3 +1,4 @@
+import getApi from "./components/data/usecases/get-api";
 import InputTodo from "./components/infrastructure/todo/atoms/InputTodo";
 import SectionFactory from "./components/infrastructure/todo/utils/SectionFactory";
 
@@ -5,6 +6,7 @@ import SectionFactory from "./components/infrastructure/todo/utils/SectionFactor
 responsible for creating todos*/
 
 export function ChallengeComponent() {
+  
   return (
     <>
       <SectionFactory />

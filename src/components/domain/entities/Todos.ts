@@ -1,4 +1,4 @@
-import { v4 } from "uuid";
+import { uuid } from "uuidv4";
 
 //That's a class to define a factory of Todos
 //It's going to use V4 for generating id's and date.now() to set the last alteration date
@@ -9,7 +9,7 @@ export class Todo {
   date: number;
 
   constructor(text: string) {
-    this.id = v4();
+    this.id = uuid();
     this.text = text;
     this.position = 1;
     this.date = Date.now();
