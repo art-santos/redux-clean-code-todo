@@ -12,7 +12,7 @@ function App() {
             alignItems: "center",
           }}
         >
-          <h1>Welcome To The Every.io Code Challenge.</h1>
+          <h1>Welcome To The Clean Code.</h1>
         </div>
       </header>
       <main

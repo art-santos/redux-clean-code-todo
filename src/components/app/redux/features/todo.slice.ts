@@ -23,7 +23,6 @@ export const getInitialTodos = createAsyncThunk(
     }
     const todos = todo.map((item:any) => typeof item.state === 'string' ? {...item, state: trimPosition(item.state)} : item);
 
-    console.log('stawdwdte-->',todos)
     return todos;
   }
 );
