@@ -1,8 +1,15 @@
-# EVERY.IO TODO
+# Redux Clean Code Todo and Atomic Design
+This project is a small ToDo for showing some of the best pratices of Clean Code and Atomic Design in the frontend.
 
-Every todo is a very small project who's intend to create a funcional todo application.
+
+# CLEAN CODE TODO
+
+Clean Code todo is a very small project who's intend to create a funcional todo application.
 It does have some functionalities like: Add and move the todos, changing his state, as asked in the challange.
 Also have complete, delete and persist functionalities, added by me.
+
+# redux-clean-code-todo
+This project is a small ToDo for showing some of the best pratices of Clean Code and Atomic Design in the frontend
 
 ## Features used for building this APP
 
@@ -47,4 +54,4 @@ Running
 
 ## Demo
 
-[EVERY TODO](https://todo.arthursantos.codes)
+[ TODO](https://todo.arthursantos.codes)
